@@ -104,8 +104,8 @@ spiralMat    <- function(phase, beta = getSpiralBeta(), gamma = getSpiralGamma()
   theta    <- ( atan2(matY, matX) + pi) + phase
 
   # Note that:
-  #      r >= exp( (2 * p * (rev-1) + theta) * alpha)  
-  # and  r <= exp( (2 * p *  rev    + theta) * alpha)
+  #      r >= exp( (2 * pi * (rev-1) + theta) * alpha)  
+  # and  r <= exp( (2 * pi *  rev    + theta) * alpha)
   # where rev is the number of revolutions 
   rev      <- ceiling((log(matR)/ alpha  - theta) /( 2 * pi))
 
