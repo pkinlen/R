@@ -1,11 +1,6 @@
 
 # Philip Kinlen, Aug 2014
 
-# To load the following script into an R session, could type:
-#     source("/home/pnelnik/dev/R/scripts/mc.r")
-# ( assuming that's the correct file-path)
-
-
 # run a monte carlo
 # numSim is the integer number of simulations
 # randSeed will only be reset if it is non zero
