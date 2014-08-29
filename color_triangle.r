@@ -46,12 +46,6 @@ RGBTriangle <- function(numPix = 100, gapX = 10, doSmoothing=FALSE) {
   # One possible source of minor confusion is that when we write a cartesian co-ordinate (x,y)
   # the x comes first.
   # but in a matrix, we specify the row index first, which corresponds to y
-  
-  res72 <- isInsideTriangle(3, 2, m1, c1, m2 ,c2, gapY)
-  res82 <- isInsideTriangle(4, 2, m1, c1, m2 ,c2, gapY)
-  res92 <- isInsideTriangle(5, 2, m1, c1, m2 ,c2, gapY)
-  
-  return ( c(m1,c1,m2,c2,gapY,gapX, res72, res82, res92, m1 * 1 + c1, m2 * 5 + c2))
 } 
 
 #################################################################
