@@ -8,16 +8,12 @@ library(grid) # required for grid.raster(.)
 # To see what this triangle looks like, have a look at the following URL:
 #       http://abitofmaths.blogspot.hk/2014/08/pretty-pictures-with-r.html
 
-# the shape obtained when the user calls: RGBTriangle(6, 1, F)
-# is asymmetric. It shouldn't be. 
-
-
 # numPix should be an integer,
 # and gapX < (numPix / 2) 
 # where gapX is the minimum number of horizontal pixels from the triangle to the edge of the image
 RGBTriangle <- function(numPix = 100, gapX = 10, doSmoothing=FALSE) {
   # the verticle gap between the triangle and edge of image
-  gapX            <- gapX + 0.1 # add the 0.1 to lessen rounding errors.
+  gapX            <- gapX 
   gapY            <- numPix * ( 0.5 - sqrt(3)/4) + gapX * sqrt(3)/2
 
   xArr            <- 1:numPix
@@ -28,12 +24,12 @@ RGBTriangle <- function(numPix = 100, gapX = 10, doSmoothing=FALSE) {
   xMat            <- matrix(rep(xArr, numPix), numPix, numPix, F)  
   yMat            <- matrix(rep(yArr, numPix), numPix, numPix, T)  
 
-  m1              <- sqrt(3)                          # slope
-  c1              <- gapY  - m1 * gapX                # intercept
+  m1              <- sqrt(3)                                 # slope
+  c1              <- gapY + 0.25 - m1 * gapX                 # intercept
   
-  m2              <- -sqrt(3)                         # slope
-  c2              <- gapY + 1 - m2 * (numPix - gapX)  # intercept, the + 1 was inserted for empirical reasons! In
-                                                      # particular to deal with the asymmetry for small numPix values
+  m2              <- -sqrt(3)                                # slope
+  c2              <- gapY + 0.25 - m2 * (numPix - gapX + 1)  # intercept,
+  
   height          <- numPix + 0.5 - 2 * gapY          # Height of triangle in pixels
 
   red             <- matrix(mapply(rightFade, xMat, yMat, m1, c1, m2, c2, gapY, height), numPix, numPix, T)
